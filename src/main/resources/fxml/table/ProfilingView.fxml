@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import de.jensd.fx.glyphs.materialicons.*?>
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #546E7A;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <TableView fx:id="tableView" layoutY="80.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
+            <columns>
+                <TableColumn id="timeColumn" fx:id="timeColumn" minWidth="133" prefWidth="133" text="Time">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="time" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn id="operationColumn" fx:id="operationColumn" minWidth="99.0" prefWidth="99.0" text="Operation">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="operation" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn id="collectionColumn" fx:id="collectionColumn" minWidth="133" prefWidth="167.0" text="Collection">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="collection" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn id="durationColumn" fx:id="durationColumn" minWidth="78.0" prefWidth="82.0" text="Duration">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="duration" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn id="queryColumn" fx:id="queryColumn" editable="false" minWidth="133" prefWidth="184.0" sortable="false" text="Query">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="query" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="statsColumn" minWidth="133" text="Stats">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="stats" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn id="problemColumn" fx:id="problemColumn" minWidth="133" text="Problem" />
+            </columns>
+        </TableView>
+        <VBox layoutX="336.0" layoutY="8.0" AnchorPane.rightAnchor="10.0">
+            <children>
+                <JFXToggleButton fx:id="profilingToggleButton" prefHeight="58.0" prefWidth="162.0" style="-fx-font-size:14px;-fx-background-color:WHITE;" text="Spy" toggleColor="#c62828">
+                </JFXToggleButton>
+
+                <JFXButton fx:id="clearButton" buttonType="RAISED" prefHeight="58.0" prefWidth="162.0" style="-fx-font-size:14px;-fx-background-color:WHITE;" text="Discard">
+                    <graphic>
+                        <MaterialIconView glyphName="DELETE" />
+                    </graphic>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+                </JFXButton>
+
+            </children>
+        </VBox>
+        <VBox prefHeight="200.0" prefWidth="464.0">
+            <children>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <JFXTextField fx:id="operationField" promptText="Command type">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </JFXTextField>
+                    </children>
+                </HBox>
+                <HBox prefHeight="67.0" prefWidth="435.0">
+                    <children>
+                        <JFXTextField fx:id="collectionField" promptText="Collection name">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </JFXTextField>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Threshold" />
+                        <JFXSlider fx:id="millisThreshold" prefHeight="17.0" prefWidth="151.0" showTickLabels="true" showTickMarks="true">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </JFXSlider>
+                    </children>
+                    <padding>
+                        <Insets top="30.0" />
+                    </padding>
+                </HBox>
+            </children>
+            <padding>
+                <Insets left="20.0" right="20.0" top="20.0" />
+            </padding>
+        </VBox>
+        <JFXProgressBar fx:id="progressBar" layoutX="312.0" layoutY="199.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <cursor>
+                <Cursor fx:constant="WAIT" />
+            </cursor>
+        </JFXProgressBar>
+    </children>
+</AnchorPane>
