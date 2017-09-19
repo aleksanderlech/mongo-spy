@@ -14,7 +14,7 @@ public class QueryExtractor implements ValueExtractor<Query> {
 
             Document queryFilter = (Document) queryDocument.get("filter");
             String filter = queryFilter == null ? queryDocument.toJson() : queryFilter.toJson();
-            String sort = ((Document) queryDocument.get("sort")).toJson();
+            String sort = Optional.ofNullable((Document) queryDocument.get("sort")).map(Document::toJson).orElse(null);
             Integer skip = queryDocument.getInteger("skip");
             Integer limit = queryDocument.getInteger("limit");
 
