@@ -11,7 +11,7 @@ import java.util.Date;
  * @author aleksanderlech
  */
 @Value
-public class ProfiledQuery {
+public class ProfiledQuery implements Comparable<ProfiledQuery> {
 
     private Date time;
     private String operation;
@@ -28,5 +28,10 @@ public class ProfiledQuery {
         this.duration = duration;
         this.query = query;
         this.stats = stats;
+    }
+
+    @Override
+    public int compareTo(ProfiledQuery o) {
+        return o.getTime().compareTo(getTime());
     }
 }

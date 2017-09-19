@@ -6,10 +6,12 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Sorts;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.bson.Document;
 
+import java.util.Collections;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -62,6 +64,8 @@ public class ProfiledQueryListProvider implements Supplier<ObservableList<Profil
                     .noCursorTimeout(true)
                     .forEach((Consumer<? super Document>) result -> {
 
+
+
                         results.add(new ProfiledQuery(
                                 result.getDate("ts"),
                                 result.getString("op"),
@@ -70,6 +74,8 @@ public class ProfiledQueryListProvider implements Supplier<ObservableList<Profil
                                 queryExtractor.apply(result).orElse(null),
                                 statsExtractor.apply(result).orElse(null)
                         ));
+
+                        Collections.sort(results);
 
                     });
 
