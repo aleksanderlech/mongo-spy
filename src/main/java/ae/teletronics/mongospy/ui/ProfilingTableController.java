@@ -3,6 +3,7 @@ package ae.teletronics.mongospy.ui;
 
 import ae.teletronics.mongospy.db.ProfiledQueryListProvider;
 import ae.teletronics.mongospy.db.model.*;
+import ae.teletronics.mongospy.db.model.ExecutionStage;
 import ae.teletronics.mongospy.ui.components.QueryCellFactory;
 import ae.teletronics.mongospy.ui.components.StatsCellFactory;
 import com.jfoenix.controls.*;

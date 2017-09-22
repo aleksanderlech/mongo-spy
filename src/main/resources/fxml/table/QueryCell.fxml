@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -9,18 +10,36 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
 
-<HBox>
-    <VBox>
-        <FontAwesomeIconView fill="#546E7A" glyphName="FILTER" />
-        <FontAwesomeIconView fill="#546E7A" glyphName="SORT" />
-         <HBox.margin>
-            <Insets bottom="1.0" left="5.0" right="1.0" top="1.0" />
-         </HBox.margin>
-    </VBox>
-    <VBox fx:id="root" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <VBox fx:id="root" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+
+        <HBox>
+            <FontAwesomeIconView wrappingWidth="15"  fill="#546E7A" glyphName="FILTER" />
             <Text fx:id="filter" text="{ sample query }" textAlignment="CENTER" />
+
+        </HBox>
+        <HBox fx:id="sortContainer">
+            <FontAwesomeIconView wrappingWidth="15"  fill="#546E7A" glyphName="SORT" />
             <Text fx:id="sort" text="{ sample sort }" textAlignment="CENTER" />
+        </HBox>
+        <HBox fx:id="queryOptionsContainer">
+
+            <FontAwesomeIconView wrappingWidth="15" fill="#546E7A" glyphName="SLIDERS"/>
+
+            <HBox fx:id="limitContainer">
+                <Label text="limit:" />
+                <Text fx:id="limit" text="10" textAlignment="CENTER" />
+            </HBox>
+
+            <HBox fx:id="skipContainer">
+                <HBox.margin>
+                    <Insets left="1.0"  />
+                </HBox.margin>
+
+                <Label text="skip:" />
+                <Text fx:id="skip" text="10" textAlignment="CENTER" />
+            </HBox>
+
+        </HBox>
     </VBox>
-</HBox>
 
 </AnchorPane>

@@ -2,6 +2,7 @@ package ae.teletronics.mongospy.ui.components;
 
 import ae.teletronics.mongospy.db.model.Query;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.layout.AnchorPane;
@@ -33,8 +34,26 @@ public class QueryCellFactory implements Callback<TableColumn<String, Query>, Ta
                     ((Text) template.lookup("#filter")).setText(q.getFilter());
 
                     //Sort
-                    template.lookup("#sort").setVisible(q.getSort() != null);
+                    template.lookup("#sortContainer").setVisible(q.getSort() != null);
                     ((Text) template.lookup("#sort")).setText(q.getSort());
+
+
+                    Node queryOptionsContainer = template.lookup("#queryOptionsContainer");
+                    Integer skip = q.getSkip();
+                    Integer limit = q.getLimit();
+
+                    if (skip == null && limit == null) {
+                        queryOptionsContainer.setVisible(false);
+                    } else {
+                        //Skip
+                        template.lookup("#skipContainer").setVisible(skip != null);
+                        ((Text) template.lookup("#skip")).setText(skip == null ? null : skip.toString());
+
+                        //Limit
+                        template.lookup("#limitContainer").setVisible(limit != null);
+                        ((Text) template.lookup("#limit")).setText(limit == null ? null : limit.toString());
+                    }
+
 
                     setGraphic(template);
                 }

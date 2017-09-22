@@ -1,4 +1,4 @@
-package ae.teletronics.mongospy.db;
+package ae.teletronics.mongospy.db.model;
 
 import lombok.Value;
 

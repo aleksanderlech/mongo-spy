@@ -21,15 +21,15 @@ public class StatsExtractor implements ValueExtractor<ExecutionStage> {
 
     private ExecutionStage createExecutionStage(Document inputStage) {
 
-        String stage = inputStage.getString("stage");
-        Integer nReturned = inputStage.getInteger("nReturned");
-        Integer millis = inputStage.getInteger("millis", 0);
-
-        List<Document> parentInputStages = Optional.ofNullable((Document) inputStage.get("inputStage"))
-                .map(Arrays::asList)
-                .orElse(Optional.ofNullable((List<Document>) inputStage.get("inputStages")).orElse(Collections.emptyList()));
-
-        return new ExecutionStage(stage, millis, nReturned, parentInputStages.stream().map(this::createExecutionStage).collect(Collectors.toList()));
+        return new ExecutionStage(inputStage.getString("stage"),
+                inputStage.getInteger("millis", 0),
+                inputStage.getInteger("nReturned"),
+                inputStage.getInteger("processedDocuments", 0),
+                inputStage.getString("indexName"),
+                Optional.ofNullable((Document) inputStage.get("inputStage"))
+                        .map(Arrays::asList)
+                        .orElse(Optional.ofNullable((List<Document>) inputStage.get("inputStages")).orElse(Collections.emptyList()))
+                        .stream().map(this::createExecutionStage).collect(Collectors.toList()));
 
     }
 
